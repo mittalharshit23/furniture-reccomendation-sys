@@ -69,7 +69,6 @@ models/*.pkl
 
 # Data files
 *.csv
-*.json
 *.parquet
 data/
 datasets/
