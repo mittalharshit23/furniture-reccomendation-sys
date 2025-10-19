@@ -1,0 +1,36 @@
+# Render Blueprint Configuration
+# This file defines the infrastructure for deploying the Furniture Recommendation System
+
+services:
+  # Web Service - Combined Backend + Frontend
+  - type: web
+    name: furniture-recommendation-system
+    env: docker
+    dockerfilePath: ./Dockerfile
+    region: oregon # Change to your preferred region
+    plan: starter # Change based on your needs (free/starter/standard/pro)
+    
+    # Environment variables
+    envVars:
+      - key: API_HOST
+        value: 0.0.0.0
+      - key: DEBUG
+        value: false
+      - key: PYTHONUNBUFFERED
+        value: 1
+      - key: DATABASE_PATH
+        value: data/furniture_dataset.csv
+      
+    # Health check endpoint
+    healthCheckPath: /health
+    
+    # Auto-deploy on push
+    autoDeploy: true
+    
+    # Build command (optional, docker build happens automatically)
+    # dockerCommand is set in Dockerfile CMD
+
+# Optional: Add database or other services here if needed
+# databases:
+#   - name: furniture-db
+#     plan: starter

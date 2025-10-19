@@ -15,6 +15,7 @@ import numpy as np
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 # SSL certificate fix for embedding model downloads
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -55,6 +56,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount the static files directory for the frontend
+app.mount("/", StaticFiles(directory="frontend_build", html=True), name="static")
 
 
 # ============================================================================

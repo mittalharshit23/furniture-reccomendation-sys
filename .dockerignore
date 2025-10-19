@@ -1,26 +1,19 @@
 # Git
-.git/
+.git
 .gitignore
 
-# Documentation
-*.md
-!README.md
+# Node
+node_modules
+npm-debug.log
 
-# Temporary files
-*.log
-.DS_Store
-Thumbs.db
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
 
-# IDE
-.vscode/
-.idea/
-
-# Node modules (will be installed in containers)
-frontend/node_modules/
-
-# Python virtual env (will be created in container)
-backend/venv/
-backend/__pycache__/
-
-# Build artifacts
-frontend/build/
+# Docker
+Dockerfile
