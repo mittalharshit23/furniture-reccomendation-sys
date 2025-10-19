@@ -4,16 +4,16 @@
 # Stage 1: Build Frontend
 FROM node:18-alpine AS frontend-build
 
-WORKDIR /frontend
+WORKDIR /app
 
 # Copy frontend package files
-COPY frontend/package*.json ./
+COPY frontend/package*.json .
 
 # Install dependencies
 RUN npm install --legacy-peer-deps
 
 # Copy frontend source
-COPY frontend/ ./
+COPY frontend/ .
 
 # Build the React app for production
 RUN npm run build
@@ -39,7 +39,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY backend/ .
 
 # Copy built frontend from previous stage to serve as static files
-COPY --from=frontend-build /frontend/build /app/frontend_build
+COPY --from=frontend-build /app/build /app/frontend_build
 
 # Create necessary directories
 RUN mkdir -p /app/data /app/logs
