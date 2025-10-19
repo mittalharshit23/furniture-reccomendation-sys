@@ -9,6 +9,9 @@ WORKDIR /app
 # Copy frontend package files
 COPY frontend/package*.json .
 
+# Force install of compatible ajv
+RUN npm install ajv@^6.12.6
+
 # Install dependencies
 RUN npm install --legacy-peer-deps
 
